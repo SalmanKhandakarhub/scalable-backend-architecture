@@ -30,12 +30,12 @@ func InitDB(cfg *config.Config) (*gorm.DB, error) {
 		return nil, fmt.Errorf("failed to connect to database: %w", err)
 	}
 
-	log.Panicln("Database connected successfully.")
+	log.Println("Database connected successfully.")
 	return db, nil
 }
 
 func AutoMigrate(db *gorm.DB) error {
-	log.Panicln("Running database migration...")
+	log.Println("Running database migration...")
 
 	err := db.AutoMigrate(
 		&user.User{},
@@ -45,6 +45,6 @@ func AutoMigrate(db *gorm.DB) error {
 	if err != nil {
 		return fmt.Errorf("Migration failed: %w", err)
 	}
-	log.Panicln("Database migations completed")
+	log.Println("Database migations completed")
 	return nil
 }
